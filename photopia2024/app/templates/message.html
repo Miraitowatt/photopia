@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        PHOTOPIA-消息页
+    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/a.min.css">
+    <link rel="stylesheet" href="static/css/a.css">
+    <link rel="stylesheet" href="static/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="static/css/style1.css">
+    <link rel="stylesheet" href="static/css/index.css">
+    <link rel="stylesheet" href="static/css/bootstrap4.css">
+    <link rel="stylesheet" href="static/css/worklist1.css">
+    <link rel="stylesheet" href="static/css/worklist2.css">
+    <link rel="stylesheet" href="static/css/message.css">
+    <link rel="stylesheet" href="static/css/font.css">
+    <link rel="shortcut icon" href="static/img/logo-mini.svg" />
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1046.0" data-gr-ext-installed class>
+    <div class=" container-scroller">
+        <!--这是头部导航栏-->
+        <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="navbar-brand-wrapper d-flex justify-content-center">
+                <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
+                    <a class="navbar-brand brand-logo" href="/index"><img src="static/img/logo.svg" alt="logo"></a>
+                    <a class="navbar-brand brand-logo-mini" href="/index"><img src="static/img/logo-mini.svg"
+                            alt="logo"></a>
+                </div>
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+                <ul class="navbar-nav mr-lg-4 w-100">
+                    <li class="nav-item nav-search d-none d-lg-block w-100">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="search">
+                                    <img class="bi bi-search" src="static/img/search.png" style="width:3.5%">
+                                <input type="text" class="form-control" id="search-input" placeholder="搜索更多.."
+                                aria-label="search" aria-describedby="search" style="font-family: 'Dingtalk Jinbuti';font-weight: 100;color: #000000c2;"></span>
+                            </div>
+                            
+
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav navbar-nav-right">
+
+                    <li class="nav-item nav-profile dropdown">
+                        <a class="nav-link" href="/edit_userinfo" data-toggle="dropdown" id="profileDropdown">
+                            <img src="{{photo}}" />
+                            <span class="nav-profile-name" style="font-family: 'Dingtalk Jinbuti';font-weight: 100;color: #000000c2;">你好，{{username}} !</span>
+                        </a>
+                    </li>
+                </ul>
+
+
+            </div>
+        </nav>
+        
+        <div class="container-fluid page-body-wrapper">
+            <!--这是左侧导航栏-->
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link left-nav" href="/index">
+                            <img src="static/img/home.png" style="width:36%;padding-right:10%">
+                            <span class="menu-title ding">主页</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link left-nav" data-toggle="collapse" href="/resources" aria-expanded="false"
+                            aria-controls="ui-basic">
+                            <img src="static/img/ground.png" style="width:36%;padding-right:10%">
+                            <span class="menu-title ding">广场</span>
+
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link left-nav" href="/publish">
+                            <img src="static/img/publish.png" style="width:36%;padding-right:10%">
+                            <span class="menu-title ding">发布</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link left-nav active-nav" href="/message">
+                            <img src="static/img/message.png" style="width:36%;padding-right:10%">
+                            <span class="menu-title ding">消息</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link left-nav" href="/personal/{{current_user.user_id}}">
+                            <img src="static/img/me.png" style="width:36%;padding-right:10%">
+                            <span class="menu-title ding">我</span>
+                        </a>
+                    </li>
+                    {% if current_user.power==2 %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/users">
+                            <img src="static/img/admin.png" style="width:36%;padding-right:10%">
+                                <span class="menu-title ding">&nbsp管理界面</span>
+                        </a>
+                    </li>
+                    {%endif%}
+
+                </ul>
+            </nav>
+            <!--这是消息列表-->
+            <div class="main-panel">
+                <main role="main">
+                    <!--这是消息分类-->
+                    <div class="reds-sticky">
+                        <div class="tertiary left reds-tabs-list" style="padding: 0px 32px;">
+                            <div class="reds-tab-item tab-item"
+                                style="padding: 0px 16px; margin-right: 0px; font-size: 16px;">
+                                <div href="#" class="badge-container"><a class="nav-link dynamic-load" id="notice"
+                                        href="#" title="系统公告">系统公告</a></div>
+                                
+                            </div>
+                            <div class="reds-tab-item tab-item"
+                                style="padding: 0px 16px; margin-right: 0px; font-size: 16px;">
+                                <div href="#" class="badge-container"><a class="nav-link dynamic-load" id="comments"
+                                        href="#" title="评论和@">评论和@</a></div>
+                                
+                            </div>
+                            <div class="reds-tab-item tab-item"
+                                style="padding: 0px 16px; margin-right: 0px; font-size: 16px;">
+                                <div class="badge-container"> <a class="nav-link dynamic-load" href="#"
+                                        id="likes_and_collects" title="赞和收藏">赞和收藏</a></div>
+                            </div>
+                            <div class="reds-tab-item tab-item"
+                                style="padding: 0px 16px; margin-right: 0px; font-size: 16px;">
+                                <div class="badge-container"><a class="nav-link dynamic-load" href="#" title="新增关注"
+                                        id="follows">新增关注</a></div>
+                            </div>
+                            <div class="active-tag" style="width: 96.4875px; left: 32px;"></div>
+                        </div>
+                        <div class="divider" style="margin: 16px 32px 0px;"></div>
+
+                    </div>
+                    <div id="content" class="tabs-content-container">
+                        <!--消息列表-->
+                        
+
+</div>
+
+
+
+
+
+
+
+                    </div>
+
+                </main>
+            </div>
+
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                // 为动态内容加载类设置点击事件监听器
+                $('a.dynamic-load').on('click', function (e) {
+                    // 阻止默认的链接行为
+                    e.preventDefault();
+
+                    // 首先移除所有可能已经设置为active的tab
+                    $('.active-tab').removeClass('active-tab');
+
+                    // 找到当前点击的a标签上两级的div，并添加active-tab类
+                    $(this).closest('div').parent().addClass('active-tab');
+
+                    // 获取被点击的<a>标签的id
+                    var id = $(this).attr('id');
+
+                    // 根据id决定要请求的URL
+                    var url = "";
+                    switch (id) {
+                        case 'likes_and_collects':
+                            url = '/message/likes_and_collects';
+                            break;
+                        case 'follows':
+                            url = '/message/follows';
+                            break;
+                        case 'comments':
+                            url = '/message/comments';
+                            break;
+                        case 'notice':
+                            url = '/message/notices';
+                            break;
+                        default:
+                            return; // 如果id不匹配，则不执行任何操作
+                    }
+
+                    // Ajax请求服务器获取动态内容
+                    $.ajax({
+                        url: url,
+                        type: 'GET',
+                        dataType: 'html', // 假设服务器响应HTML字符串
+                        success: function (data) {
+                            // 将获取到的内容动态显示在页面的指定位置
+                            $('#content').html(data);
+
+                            // 使用history.pushState更新地址栏URL
+                            history.pushState({}, '', url);
+                        },
+                        error: function (xhr, status, error) {
+                            // 错误处理
+                            console.error("Error occurred: " + error);
+                        }
+                    });
+                });
+            });
+
+        </script>
+
+</body>
+
+</html>

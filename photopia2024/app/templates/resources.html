@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            PHOTOPIA-广场
+        </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="static/css/a.min.css">
+        <link rel="stylesheet" href="static/css/a.css">
+        <link rel="stylesheet" href="static/css/font.css">
+        <link rel="stylesheet" href="static/css/dataTables.bootstrap4.css">
+        <link rel="stylesheet" href="static/css/style1.css">
+        <link rel="stylesheet" href="static/css/index.css">
+        <link rel="stylesheet" href="static/css/bootstrap4.css">
+        <link rel="stylesheet" href="static/css/worklist1.css">
+        <link rel="stylesheet" href="static/css/worklist2.css">
+        <link rel="stylesheet" href="static/css/font.css">
+        <link rel="shortcut icon" href="static/img/logo-mini.svg" />
+        
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Source+Sans+Pro:400,600,700" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <link href="static/css/main.css" rel="stylesheet"/>
+        <link href="static/css/ground.css" rel="stylesheet"/>
+        <style>
+            body {
+        padding-top:0px;
+        }
+        
+.page-body-wrapper {
+    padding-top: 0px!important;
+}
+
+body > div.container-scroller > div > div > main > section > div:nth-child(1) > div > div > div > div.col-md-6.d-none.d-md-block.pr-0{
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  height: 100%; 
+}
+
+
+body > div.container-scroller > div > div > main > section > div:nth-child(1) > div > div > div > div.col-md-6.d-none.d-md-block.pr-0 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: auto 0;
+}
+
+body > div.container-scroller > div > div > main > section > div.container.pt-4.pb-4 > div > div:nth-child(1) > div > div:nth-child(1) > img{
+    height: 150px;
+    width:500px;
+    object-fit: cover; 
+}
+
+.mb-3.d-flex.justify-content-between {
+    margin-right: 50px;
+}
+        </style>
+
+    </head>
+    <body data-new-gr-c-s-check-loaded="14.1046.0" data-gr-ext-installed class>
+        <div class=" container-scroller">
+            <!--这是头部导航栏-->
+            <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="navbar-brand-wrapper d-flex justify-content-center">
+                <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
+                    <a class="navbar-brand brand-logo" href="/index"><img src="static/img/logo.svg" alt="logo"></a>
+                    <a class="navbar-brand brand-logo-mini" href="/index"><img src="static/img/logo-mini.svg"
+                            alt="logo"></a>
+                </div>
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+                <ul class="navbar-nav mr-lg-4 w-100">
+                    <li class="nav-item nav-search d-none d-lg-block w-100">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="search">
+                                    <img class="bi bi-search" src="static/img/search.png" style="width:3.5%">
+                                <input type="text" class="form-control" id="search-input" placeholder="搜索更多.."
+                                aria-label="search" aria-describedby="search" style="font-family: 'Dingtalk Jinbuti';font-weight: 100;color: #000000c2;"></span>
+                            </div>
+                            
+
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav navbar-nav-right">
+
+                    <li class="nav-item nav-profile dropdown nav-profile">
+                        <a class="nav-link nav-profile" href="/edit_userinfo" data-toggle="dropdown" id="profileDropdown">
+                            <img src="{{photo}}" />
+                            <span class="nav-profile-name" style="font-family: 'Dingtalk Jinbuti';font-weight: 100;color: #000000c2;">你好，{{username}} !</span>
+                        </a>
+                    </li>
+                </ul>
+
+
+            </div>
+        </nav>
+            
+            <div class="container-fluid page-body-wrapper">
+                <!--这是左侧导航栏-->
+                <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link left-nav" href="/index">
+                                <img src="static/img/home.png" style="width:36%;padding-right:10%">
+                                <span class="menu-title ding">主页</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link left-nav active-nav" data-toggle="collapse" href="/resources" aria-expanded="false"
+                                aria-controls="ui-basic">
+                                <img src="static/img/ground.png" style="width:36%;padding-right:10%">
+                                <span class="menu-title ding">广场</span>
+    
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link left-nav" href="/publish">
+                                <img src="static/img/publish.png" style="width:36%;padding-right:10%">
+                                <span class="menu-title ding">发布</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link left-nav" href="/message">
+                                <img src="static/img/message.png" style="width:36%;padding-right:10%">
+                                <span class="menu-title ding">消息</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link left-nav" href="/personal/{{current_user.user_id}}">
+                                <img src="static/img/me.png" style="width:36%;padding-right:10%">
+                                <span class="menu-title ding">我</span>
+                            </a>
+                        </li>
+                        {% if current_user.power==2 %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/users">
+                            <img src="static/img/admin.png" style="width:36%;padding-right:10%">
+                                <span class="menu-title ding">&nbsp管理界面</span>
+                        </a>
+                    </li>
+                    {%endif%}
+    
+                    </ul>
+                </nav>
+                <div class="main-panel">
+                    <main role="main">
+                        <section class="mt-4 mb-5">
+                            <div class="container">
+                                
+<!--——————————————————课程轮播————————————————————————-->
+
+<section class="home">
+
+    <div class="slides-container">
+    
+        <div class="slide active">
+            <div class="image">
+               <img src="static/image/banner/banner1.png" alt="">
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="image">
+                <img src="static/image/banner/banner2.png" alt="">
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="image">
+                <img src="static/image/banner/banner3.png" alt="">
+            </div>
+        </div>
+
+    </div>
+
+    <div id="next-slide" class="fas fa-angle-right" onclick="next()"></div>
+    <div id="prev-slide" class="fas fa-angle-left" onclick="next()"></div>
+
+</section>
+
+
+
+<!--——————————————————器材筛选————————————————————————-->
+
+
+<div class = "wrapper">
+    <div class = "category-filter">
+        <div class = "">
+            <div class = "title">
+                <h1 class="ding">精选器材</h1>
+            </div>
+
+            <div class = "filter-btns">
+                <button type = "button" class = "filter-btn" id = "all">all</button>
+                <button type = "button" class = "filter-btn" id = "Sony">Sony</button>
+                <button type = "button" class = "filter-btn" id = "Canon">Canon</button>
+                <button type = "button" class = "filter-btn" id = "Nikon">Nikon</button>
+            </div>
+
+            <div class = "filter-items">
+                <div class = "filter-item all Sony">
+                    <div class = "item-img">
+                        <img src = "static/image/camera/Sony1.png" alt = "Item image">
+                    </div>
+                    <div class = "item-info">
+                        <p>A7R V</p>
+                        <div>
+                            <span class = "info">DR 14.8;ISO 3187</span>
+                        </div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <a href = "#https://www.dxomark.cn/Cameras/Sony/A7RV" class ="add-btn">了解更多</a>
+                    </div>
+                </div>
+
+                <div class = "filter-item all Canon">
+                    <div class = "item-img">
+                        <img src = "static/image/camera/Canon1.png" alt = "Item image">
+                    </div>
+                    <div class = "item-info">
+                        <p>EOS R3</p>
+                        <div>
+                            <span class = "info">DR:14.7;ISO:4086</span>
+                        </div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <a href = "#https://www.dxomark.cn/cn/Cameras/Canon/EOS-R3" class ="add-btn">了解更多</a>
+                    </div>
+                </div>
+
+                <div class = "filter-item all Nikon">
+                    <div class = "item-img">
+                        <img src = "static/image/camera/Nikon1.png" alt = "Item image">
+                    </div>
+                    <div class = "item-info">
+                        <p>D850</p>
+                        <div>
+                            <span class = "info">DR:14.8;ISO:2660</span>
+                        </div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <a href = "#https://www.dxomark.cn/cn/Cameras/Nikon/D850" class ="add-btn">了解更多</a>
+                    </div>
+                </div>
+
+                <div class = "filter-item all Sony">
+                    <div class = "item-img">
+                        <img src = "static/image/camera/Sony2.png" alt = "Item image">
+                    </div>
+                    <div class = "item-info">
+                        <p>A7R IV</p>
+                        <div>
+                            <span class = "info">DR 14.7;ISO 3379</span>
+                        </div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <a href = "#https://www.dxomark.cn/Cameras/Sony/A7RIV" class ="add-btn">了解更多</a>
+                    </div>
+                </div>
+
+                <div class = "filter-item all Canon">
+                    <div class = "item-img">
+                        <img src = "static/image/camera/Canon2.png" alt = "Item image">
+                    </div>
+                    <div class = "item-info">
+                        <p>EOS R5</p>
+                        <div>
+                            <span class = "info">DR:14.7;ISO:3379</span>
+                        </div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <a href = "#https://www.dxomark.cn/Cameras/Sony/A7RIV" class ="add-btn">了解更多</a>
+                    </div>
+                </div>
+
+                <div class = "filter-item all Nikon">
+                    <div class = "item-img">
+                        <img src = "static/image/camera/Nikon2.png" alt = "Item image">
+                    </div>
+                    <div class = "item-info">
+                        <p>Z7II</p>
+                        <div>
+                            <span class = "info">DR:14.7;ISO:2841</span>
+                        </div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <a href = "#https://www.dxomark.cn/cn/Cameras/Nikon/Z7II" class ="add-btn">了解更多</a>
+                    </div>
+                </div>
+
+                <div class = "filter-item all Sony">
+                    <div class = "item-img">
+                        <img src = "static/image/camera/Sony3.png" alt = "Item image">
+                    </div>
+                    <div class = "item-info">
+                        <p>A1</p>
+                        <div>
+                            <span class = "info">DR 14.5;ISO 3163</span>
+                        </div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <a href = "#https://www.dxomark.cn/Cameras/Sony/A1" class ="add-btn">了解更多</a>
+                    </div>
+                </div>
+
+                <div class = "filter-item all Canon">
+                    <div class = "item-img">
+                        <img src = "static/image/camera/Canon3.png" alt = "Item image">
+                    </div>
+                    <div class = "item-info">
+                        <p>EOS R8</p>
+                        <div>
+                            <span class = "info">DR:14.7;ISO:3295</span>
+                        </div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <a href = "#https://www.dxomark.cn/cn/Cameras/Canon/EOS-R8" class ="add-btn">了解更多</a>
+                    </div>
+                </div>
+
+                <div class = "filter-item all Nikon">
+                    <div class = "item-img">
+                        <img src = "static/image/camera/Nikon3.png" alt = "Item image">
+                    </div>
+                    <div class = "item-info">
+                        <p>Z7</p>
+                        <div>
+                            <span class = "info">DR:14.6;ISO:2668</span>
+                        </div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <a href = "#https://www.dxomark.cn/cn/Cameras/Nikon/Z7II" class ="add-btn">了解更多</a>
+                    </div>
+                </div>
+
+                <div class = "filter-item all Sony">
+                    <div class = "item-img">
+                        <img src = "static/image/camera/Sony4.png" alt = "Item image">
+                    </div>
+                    <div class = "item-info">
+                        <p>A7C</p>
+                        <div>
+                            <span class = "info">DR:14.7;ISO:3407</span>
+                        </div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <a href = "#https://www.dxomark.cn/Cameras/Sony/A7C" class ="add-btn">了解更多</a>
+                    </div>
+                </div>
+
+                <div class = "filter-item all Canon">
+                    <div class = "item-img">
+                        <img src = "static/image/camera/Canon4.png" alt = "Item image">
+                    </div>
+                    <div class = "item-info">
+                        <p>EOS-1D X Mark III</p>
+                        <div>
+                            <span class = "info">DR:14.5;ISO:3248</span>
+                        </div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <a href = "#https://www.dxomark.cn/cn/Cameras/Canon/EOS-1D-X-Mark-III" class ="add-btn">了解更多</a>
+                    </div>
+                </div>
+
+                <div class = "filter-item all Nikon">
+                    <div class = "item-img">
+                        <img src = "static/image/camera/Nikon4.png" alt = "Item image">
+                    </div>
+                    <div class = "item-info">
+                        <p>Z8</p>
+                        <div>
+                            <span class = "info">DR:14.2;ISO:2548</span>
+                        </div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <a href = "#https://www.dxomark.cn/cn/Cameras/Nikon/Z8" class ="add-btn">了解更多</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--—————————————————艺术家展览————————————————————————-->
+
+<div class = "title">
+    <h1 class="ding">艺术展览</h1>
+</div>
+<div class="gallery">
+    <figure class="card">
+        <img src="static/image/art/art1.jpeg" >
+        <a href="https://tarynsimon.com/works/aihu/#5" class="card-btn">了解艺术家</a>
+    </figure>
+
+    <figure class="card">
+        <img src="static/image/art/art3.jpeg" >
+        <a href="rinkokawauchi.com" class="card-btn">了解艺术家</a>
+    </figure>
+
+    <figure class="card">
+        <img src="static/image/art/art2.jpeg" >
+        <a href="http://wingshya.com/" class="card-btn">了解艺术家</a>
+    </figure>
+
+    <figure class="card">
+        <img src="static/image/art/art4.jpeg" >
+        <a href="http://alecsoth.com" class="card-btn">了解艺术家</a>
+    </figure>
+
+    <figure class="card">
+        <img src="static/image/art/art5.jpeg" >
+        <a href="http://simoneauguillaume.com" class="card-btn">了解艺术家</a>
+    </figure>
+
+    <figure class="card">
+        <img src="static/image/art/art6.jpeg" >
+        <a href="http://benzank.com" class="card-btn">了解艺术家</a>
+    </figure>
+
+
+    <figure class="card">
+        <img src="static/image/art/art7.jpg" >
+         <a href="http://kenroizu.com" class="card-btn">了解艺术家</a>
+    </figure>
+
+  </div>
+
+<!--—————————————————教程卡片 悬浮————————————————————————-->
+
+<div class="card-box">
+    <div class = "title">
+        <h1 class="ding">摄影教程</h1>
+    </div>
+    <div class="card__container">
+
+       <article class="card__article">
+          <img src="static/image/dir/dir1.jpg" alt="image" class="card__img">
+
+          <div class="card__data">
+             <span class="card__description">@ 小鹿Lawrence</span>
+             <h2 class="card__title">器材贵的,便是好么?背包大分享！</h2>
+             <a href="#https://www.bilibili.com/video/BV1DC411z7FQ/?spm_id_from=333.999.0.0" class="card__button">查看详情</a>
+          </div>
+       </article>
+
+       <article class="card__article">
+          <img src="static/image/dir/dir2.jpg" alt="image" class="card__img">
+
+          <div class="card__data">
+             <span class="card__description">@ 我是陈星星_</span>
+             <h2 class="card__title">调色之王“曲线”的最全解析</h2>
+             <a href="#https://www.bilibili.com/video/BV1s7411L7md/?spm_id_from=333.337.search-card.all.click&vd_source=913b8d0115b8ccede30feaed44ca0f03" class="card__button">查看详情</a>
+          </div>
+       </article>
+
+       <article class="card__article">
+          <img src="static/image/dir/dir3.jpg" alt="image" class="card__img">
+
+          <div class="card__data">
+             <span class="card__description">@ 看见看见看见38</span>
+             <h2 class="card__title">如何利用逆光：剪影打造轮廓美</h2>
+             <a href="#https://www.bilibili.com/video/BV1fM411B7zn/?spm_id_from=333.337.search-card.all.click&vd_source=913b8d0115b8ccede30feaed44ca0f03" class="card__button">查看详情</a>
+          </div>
+       </article>
+
+
+       <article class="card__article">
+        <img src="static/image/dir/dir4.jpg" alt="image" class="card__img">
+
+        <div class="card__data">
+           <span class="card__description">@ 小鹿Lawrence</span>
+           <h2 class="card__title">3个小技巧,让你的片子提升维度!</h2>
+           <a href="#https://www.bilibili.com/video/BV1GC4y1U7qU/?spm_id_from=333.999.0.0&vd_source=50c032d0a684413e1d1c63c69f43503c" class="card__button">查看详情</a>
+        </div>
+     </article>
+
+      <article class="card__article">
+          <img src="static/image/dir/dir5.jpg" alt="image" class="card__img">
+
+          <div class="card__data">
+             <span class="card__description">@ 小鹿Lawrence</span>
+             <h2 class="card__title">口袋相机的最终答案?大疆Pocket3深度评测</h2>
+             <a href="#https://www.bilibili.com/video/BV1tc411o7VB/?spm_id_from=333.999.0.0&vd_source=50c032d0a684413e1d1c63c69f43503c" class="card__button">查看详情</a>
+          </div>
+       </article>
+
+       <article class="card__article">
+        <img src="static/image/dir/dir6.jpg" alt="image" class="card__img">
+
+        <div class="card__data">
+           <span class="card__description">@ 阿蛋_Adam</span>
+           <h2 class="card__title">从根源上颠覆你对摄影构图的认知！</h2>
+           <a href="#https://www.bilibili.com/video/BV1Do4y1o7Xg/?spm_id_from=333.337.search-card.all.click&vd_source=913b8d0115b8ccede30feaed44ca0f03" class="card__button">查看详情</a>
+        </div>
+     </article>
+
+     <article class="card__article">
+        <img src="static/image/dir/dir7.jpg" alt="image" class="card__img">
+
+        <div class="card__data">
+           <span class="card__description">@ 影视飓风</span>
+           <h2 class="card__title">硬核科普:为什么我打的灯这么暗？</h2>
+           <a href="#https://search.bilibili.com/all?vt=88517699&keyword=一个公式掌握灯光&from_source=webtop_search&spm_id_from=333.788&search_source=5" class="card__button">查看详情</a>
+        </div>
+     </article>
+
+     <article class="card__article">
+        <img src="static/image/dir/dir9.jpg" alt="image" class="card__img">
+
+        <div class="card__data">
+           <span class="card__description">@ 风光喵</span>
+           <h2 class="card__title">旅拍大神都爱用的八个万能运镜公式</h2>
+           <a href="#https://www.bilibili.com/video/BV1gg4y1J7Pj/?spm_id_from=333.337.search-card.all.click&vd_source=913b8d0115b8ccede30feaed44ca0f03" class="card__button">查看详情</a>
+        </div>
+     </article>
+
+     <article class="card__article">
+        <img src="static/image/dir/dir10.jpg" alt="image" class="card__img">
+
+        <div class="card__data">
+           <span class="card__description">@ TESTV官方频道</span>
+           <h2 class="card__title">胶片摄影新手入门指南</h2>
+           <a href="#https://www.bilibili.com/video/BV1NJ411a7ug/?spm_id_from=333.337.search-card.all.click&vd_source=913b8d0115b8ccede30feaed44ca0f03" class="card__button">查看详情</a>
+        </div>
+     </article>
+
+     <article class="card__article">
+        <img src="static/image/dir/dir11.jpg" alt="image" class="card__img">
+
+        <div class="card__data">
+           <span class="card__description">@ 莫梦醒x</span>
+           <h2 class="card__title">我是怎么提升摄影审美的</h2>
+           <a href="#https://www.bilibili.com/video/BV1qh411Q7G3/?spm_id_from=333.337.search-card.all.click&vd_source=913b8d0115b8ccede30feaed44ca0f03" class="card__button">查看详情</a>
+        </div>
+     </article>
+
+
+     <article class="card__article">
+        <img src="static/image/dir/dir12.jpg" alt="image" class="card__img">
+
+        <div class="card__data">
+           <span class="card__description">@ PP崔</span>
+           <h2 class="card__title">阴天大风，光影弱色彩淡，还可以怎么拍照呢？</h2>
+           <a href="#https://www.bilibili.com/video/BV1iM411T7pG/?spm_id_from=333.337.search-card.all.click&vd_source=913b8d0115b8ccede30feaed44ca0f03" class="card__button">查看详情</a>
+        </div>
+     </article>
+
+     <article class="card__article">
+        <img src="static/image/dir/dir13.jpg" alt="image" class="card__img">
+
+        <div class="card__data">
+           <span class="card__description">@ MentalC</span>
+           <h2 class="card__title">黑柔焦镜|第一个自制小插件</h2>
+           <a href="#https://www.bilibili.com/video/BV1Ui4y1F77V/?spm_id_from=333.788.recommend_more_video.1&vd_source=913b8d0115b8ccede30feaed44ca0f03" class="card__button">查看详情</a>
+        </div>
+     </article>
+
+    </div>
+ </div>
+
+
+ <!--————————————————机位地图————————————————————————-->
+ <div style="margin-top: 20px;">
+    <div class="title" style="text-align: center;margin-bottom: 30px;">
+        <h1 class="ding" >3D机位图</h1>
+    </div>
+     
+     <div id="map_container" style="width: 100%; height:100vh;"></div>
+ </div>
+ </div> 
+ <style>
+ .info-img {
+    max-width: 1000px; /* 最大宽度限制 */
+    width: auto; /* 宽度自适应 */
+    height: 300px; /* 高度自适应 */
+  }               
+</style>                         
+                        </section>
+
+                    </main>
+                </div>
+
+            </div>
+            <script src="https://webapi.amap.com/loader.js"></script>
+            <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.1Beta&key=434773d0fb604297b0122fe63230b12c&plugin=AMap.ToolBar,AMap.HawkEye,AMap.PlaceSearch"></script>
+            <script type="text/javascript">
+              var map = new AMap.Map('map_container', {
+                rotateEnable: false,
+                pitchEnable: true, 
+                zoom: 18, 
+                pitch: 20, 
+                rotation: 0,
+                viewMode: '3D', 
+                zooms: [2, 20],
+                center: [116.314594, 39.969264],
+                terrain: true 
+              });
+              AMap.plugin(['AMap.ControlBar', 'AMap.ToolBar'], function () {
+                var controlBar = new AMap.ControlBar({
+                  position: {
+                    right: '10px',
+                    top: '10px'
+                  }
+                });
+                map.addControl(controlBar);
+                var toolBar = new AMap.ToolBar({
+                  position: {
+                    right: '40px',
+                    top: '110px'
+                  }
+                });
+                map.addControl(toolBar)
+              });
+          
+              // 添加多个marker及其信息窗体
+              var locations = [
+                { position: [116.316136,39.96858], title: "星星在空中画了一幅诗", img: "http://sdxa2uyxf.bkt.gdipper.com/%E4%BA%BA%E5%A4%A7%E5%85%AC%E6%95%99%E4%B8%80%E6%A5%BC1.jpg" },
+                { position: [116.307938,39.971385], title: "明德广场", img: "http://sdxa2uyxf.bkt.gdipper.com/%E4%BA%BA%E5%A4%A7%E6%98%8E%E5%BE%B7%E6%A5%BC1.jpg" },
+                { position: [116.308145,39.971554], title: "明德广场", img: "http://sdxa2uyxf.bkt.gdipper.com/%E4%BA%BA%E5%A4%A7%E6%98%8E%E5%BE%B7%E6%A5%BC2.jpg" },
+                { position: [116.316196,39.970064], title: "逸夫会堂", img: "http://sdxa2uyxf.bkt.gdipper.com/%E6%98%9F%E8%BD%AC%E9%80%B8%E5%A4%AB%E5%A0%821.jpg" },
+                { position: [116.316186,39.971953], title: "图书馆", img: "http://sdxa2uyxf.bkt.gdipper.com/%E5%9B%BE%E4%B9%A6%E9%A6%86%E6%98%9F%E8%BD%A81.jpg" },
+                { position: [116.313916,39.969909], title: "博物馆", img: "http://sdxa2uyxf.bkt.gdipper.com/%E4%BA%BA%E5%A4%A7%E5%8D%9A%E7%89%A9%E9%A6%861.jpg" },
+                { position: [116.313242,39.97077], title: "藏书馆", img: "http://sdxa2uyxf.bkt.gdipper.com/%E4%BA%BA%E5%A4%A7%E8%97%8F%E4%B9%A6%E9%A6%861.jpg" }
+              ];
+          
+              locations.forEach(function(location) {
+                var marker = new AMap.Marker({
+                  position: new AMap.LngLat(location.position[0], location.position[1]),
+                  offset: new AMap.Pixel(-10, -10),
+                  icon: "http://sdxa2uyxf.bkt.gdipper.com/point.png", 
+                  title: location.title,
+                });
+                map.add(marker);
+          
+                var infoWindow = new AMap.InfoWindow({
+                  content: `<div><img src="${location.img}" alt="image" class="info-img"></div>`, 
+                  offset: new AMap.Pixel(0, -30),
+                  autoMove: true
+                });
+          
+                marker.on('mouseover', function () {
+                  infoWindow.open(map, marker.getPosition());
+                });
+          
+                marker.on('mouseout', function () {
+                  infoWindow.close();
+                });
+              });
+            </script>
+            <script src="static/js/ground.js"></script>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="static/js/jquery.min.js" type="text/javascript"></script>
+            <script src="static/js/popper.min.js" type="text/javascript"></script>
+            <script src="static/js/bootstrap.min.js" type="text/javascript"></script>
+            <script src="static/js/functions.js" type="text/javascript"></script>
+</body>
+        </body>
+    </html>

@@ -1,0 +1,34 @@
+{% for notice in notice_records %}
+<div class="notice-container">
+        <main class="system">
+            <img src="/static/img/system.png" class="system-img" style="width:48px">
+        </main>
+    
+    <div>
+        <div>
+            <div class="notice-main">
+                <div class="notice-header">
+                    <span class="ding">系统通知：{{ notice.notice_name }}</span>
+                </div>
+                <div class="notice-time" style="color:gray" >
+                    <span>{{ notice.notice_time.strftime('%Y-%m-%d %H:%M') }}</span>
+                </div>
+                
+                <div class="notice-content" style="margin-top:7px;">
+                    <p>{{ notice.notice_content }}</p>
+                </div>
+        
+                {% if notice.notice_picture %}
+                <div class="notice-image">
+                    <img src="{{ notice.notice_picture }}" alt="Notice Image" style="height:150px">
+                </div>
+                {% endif %}
+        
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+{% endfor %}
+

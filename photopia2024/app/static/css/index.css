@@ -1,0 +1,187 @@
+.navbar .navbar-brand-wrapper .navbar-brand-inner-wrapper .navbar-brand img {
+    width: 130px;
+    height: 80px;
+    margin: auto;
+    vertical-align: middle;
+}
+
+
+@media (max-width: 991px){
+    .navbar .navbar-brand-wrapper .navbar-brand-inner-wrapper .navbar-brand.brand-logo-mini {
+        display: inline-block;
+        width: 2rem;
+    }
+
+    .navbar .navbar-brand-wrapper .navbar-brand-inner-wrapper .navbar-brand.brand-logo-mini img {
+        height: 60px;
+    }
+}
+
+.bi{
+    margin-right:10px;
+}
+
+.menu-title{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.sidebar .nav:not(.sub-menu) > .nav-item {
+    margin-top: 0;
+    height: 60px;
+}
+
+.navbar{
+    height:80px;
+}
+
+.sidebar .nav .nav-item .nav-link {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    white-space: nowrap;
+    padding: 1.5rem 2.5rem 1.5rem 2rem;
+    color: #000;
+    -webkit-transition-duration: 0.45s;
+    -moz-transition-duration: 0.45s;
+    -o-transition-duration: 0.45s;
+    transition-duration: 0.45s;
+    transition-property: color;
+    -webkit-transition-property: color;
+}
+
+.sidebar .nav:not(.sub-menu) > .nav-item > .nav-link{
+    height:100%;
+    vertical-align: middle;
+    margin-top:auto;
+}
+
+.sidebar .nav:not(.sub-menu) {
+    margin-top: 10px;
+
+}
+
+.sidebar .nav:not(.sub-menu) > .nav-item > .nav-link:hover {
+    height:100%;
+    border-radius: 35px;
+    vertical-align: middle;
+    margin-top:-5px;
+}
+
+.sidebar .nav:not(.sub-menu) > .nav-item > .active-nav:hover {
+    height:100%;
+    border-radius: 35px;
+    vertical-align: middle;
+    margin:auto;
+    background-color: rgba(228, 237, 255,0.5);
+}
+
+.active-nav{
+    height:100%;
+    background-color: rgba(228, 237, 255,0.5);
+    border-radius: 35px;
+    vertical-align: middle;
+    margin:auto;
+}
+
+.navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-profile .nav-link::after {
+    color: #4a4a4a;
+}
+
+.dropdown .dropdown-toggle:after {
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    border-bottom: 0;
+    font: normal normal normal 24px/1 "Material Design Icons";
+    content: "\F140";
+    width: auto;
+    height: auto;
+    vertical-align: middle;
+    line-height: .625rem;
+    font-size: 1.25rem;
+    margin-left: 0;
+}
+
+.dropdown-toggle::after {
+    display: inline-block;
+    margin-left: 0.255em;
+    vertical-align: 0.255em;
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+}
+
+.main-panel {
+    transition: width 0.25s ease, margin 0.25s ease;
+    width: calc(100% - 257px);
+    min-height: calc(100vh - 60px);
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+.card-name:hover{
+    text-decoration: none;
+}
+
+a.nav-link:hover{
+    color:#000;
+}
+
+.navbar .navbar-brand-wrapper {
+    border-right: none;
+}
+
+body > div.container-scroller > nav {
+    border-bottom: none;
+}
+
+.page-body-wrapper {
+    padding-top: 30px;
+}
+
+.navbar {
+    height: 60px;
+}
+
+#pagination-container .pagination {
+    justify-content: flex-end; /* 使分页组件靠右显示 */
+    margin-right: 10px; /* 设置右边距为10px */
+}
+
+.liked {
+    fill: red; /* 红色心形表示已经点赞 */
+}
+
+/* 默认样式 */
+.icon {
+    cursor: pointer;
+    /* 其他样式 */
+}
+
+.active-type{
+    color:#3274E7;
+}
+
+#works-list-container > div.container-fluid > div > div > div{
+    box-shadow: 0 0 0.8em rgb(0 161 255 / 20%);
+    padding: 0 10%;
+    border-radius: 15px;
+}
+
+.card-footer{
+    font-family: 'Dingtalk Jinbuti', sans-serif; 
+    font-weight: 500;
+}
+
+#pagination-container > ul > li.page-item.active > a{
+    z-index: 1;
+    color: #fff;
+    background-color: #4d83ff;
+    border-color: #4d83ff;
+}
+

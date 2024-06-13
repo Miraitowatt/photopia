@@ -1,0 +1,532 @@
+/* 应用通用样式 */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+}
+
+/* 顶部标题栏样式 */
+.container-scroller {
+    background: #fff;
+    padding: 20px;
+}
+
+/* 作者信息样式 */
+.author-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.author-wrapper {
+    padding: 10px;
+    display: flex;
+    gap:40px;
+    align-items: center;
+}
+
+.info {
+    margin-right: 15px;
+}
+
+.avatar-item {
+    border-radius: 50%;
+}
+
+.username {
+    font-weight: bold;
+}
+
+/* 作品信息样式 */
+.note-content {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+#detail-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#detail-desc {
+    margin-bottom: 10px;
+}
+
+.date {
+    font-size: 0.8em;
+    color: #666;
+}
+
+/* 评论区域样式 */
+.comments-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.parent-comment {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.comment-item {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.comment-inner-container {
+    display: flex;
+}
+
+.right {
+    flex: 1;
+    padding-left: 10px;
+}
+
+/* 交互按钮样式 */
+.interactions {
+    display: flex;
+    align-items: center;
+}
+
+.interactions .count {
+    margin-right: 15px;
+}
+
+/* 按钮样式 */
+.reds-button-new {
+    background-color: rgb(43 159 255);
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+body > div.container-scroller > div > div > div > div{
+    width:65% !important;
+    margin:0 auto;
+    border-radius: 15%;
+}
+
+
+.reds-button-new:hover {
+    background-color: rgba(43,159,255,0.7);
+}
+
+/* 页面底部空间 */
+.font-weight-light {
+    margin-top: 20px;
+}
+
+
+body > div.container-scroller > div > div > div > div > div{
+    width:50%;
+    height:800px;
+}
+
+body > div.container-scroller > div > div > div > div > div:nth-child(1) > img{
+    max-width:100%;
+    max-height: 80%;
+    margin:0 auto;
+    display:block;
+    border-radius: 10px;
+}
+
+body > div.container-scroller > div > div > div > div > div:nth-child(2) > div.auth-form-light.text-left.py-5.px-4.px-sm-5 > div > div > div > div.info > a.name{
+    text-decoration: none;
+    color:black;
+}
+
+body > div.container-scroller > div > div > div > div{
+    display:flex;
+    flex-direction: row;
+}
+
+body > div.container-scroller > div > div > div > div {
+    width: 60%;
+    margin: 0 auto;
+    border-radius: 15%;
+}
+
+body > div.container-scroller > div > div > div > div > div:nth-child(2) > div.note-scroller > div.divider.interaction-divider > div > div > div{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+}
+
+body > div.container-scroller > div > div > div > div > div:nth-child(2) > div.note-scroller > div.divider.interaction-divider > div > div > div > div.input-box > div > input{
+    border-radius: 10px;
+    border-color: #66666648;
+    line-height: 1.6rem;
+}
+
+body > div.container-scroller > div > div > div > div > div:nth-child(2) > div.note-scroller > div.divider.interaction-divider > div > div > div{
+    padding:10px;
+}
+
+body > div.container-scroller > div > div > div > div > div:nth-child(2) > div.auth-form-light.text-left.py-5.px-4.px-sm-5 > div > div > div > div.info{
+    vertical-align: middle;
+    display: flex;
+    gap:20px;
+}
+
+body > div.container-scroller > div > div > div > div > div:nth-child(2) > div.auth-form-light.text-left.py-5.px-4.px-sm-5 > div > div > div > div.info > a.name{
+    vertical-align: middle;
+    text-align: center;
+    padding-top: 10px;
+}
+
+body > div.container-scroller > div > div > div > div > div:nth-child(2) > div.auth-form-light.text-left.py-5.px-4.px-sm-5 > div > div > div > div.info > a.name > span{
+    vertical-align: middle;
+    text-align: center;
+}
+
+/*已经点赞*/
+.liked{
+    fill:red!important;
+}
+
+/*已经收藏*/
+.collected{
+    fill:rgb(245, 219, 88)!important;
+}
+
+
+
+/* 默认样式 */
+.icon {
+    cursor: pointer;
+    /* 其他样式 */
+}
+
+body > div.container-scroller > div > div > div > div > div:nth-child(2) > div > div.interaction-container{
+    flex-shrink: 0;
+    border-radius: 0 20px 20px 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100%;
+    background-color: #fff;
+    overflow: hidden;
+    border-left: 1px solid #d4d4d45a;
+    width: 100%;
+    padding-left:3%
+}
+
+body > div.container-scroller > div > div > div > div > div:nth-child(2) > div > div.interaction-container > div.note-scroller > div.divider.interaction-divider{
+    list-style: none;
+    height: 0;
+    border: solid #d4d4d45a;
+    border-width: 1px 0 0;
+    margin:0 24px;
+}
+
+body > div.container-scroller > div > div > div > div > div:nth-child(2) > div > div.interaction-container > div.note-scroller > div.comments-el > div > div{
+    font-size: 14px;
+    color: gray;
+    margin-left: 8px;
+    margin-bottom: 12px;
+}
+
+body > div.container-scroller > div > div > div > div > div:nth-child(2) > div > div.interactions.engage-bar > div{
+    width: 100%;
+    position: relative;
+}
+
+body > div.container-scroller > div > div > div > div > div:nth-child(2) > div > div.interactions.engage-bar{
+    padding: 16px 16px 0;
+    flex-basis: unset;
+    height: unset;
+
+}
+
+body > div.container-scroller > div > div > div > div > div:nth-child(2) > div > div.interactions.engage-bar > div > div > div{
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    transition: all .2s;
+}
+
+body > div.container-scroller > div > div > div > div > div:nth-child(2) > div > div.interactions.engage-bar > div > div > div > div.content-edit{
+    flex: 1;
+    position: relative;
+    min-width: 70px;
+}
+
+body > div.container-scroller > div > div > div > div > div:nth-child(2) > div > div.interactions.engage-bar > div > div > div > div.content-edit > input{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: flex-start;
+    color: rgba(128, 128, 128, 0.314);
+    font-size: 14px;
+    background-color: #d4d4d44a;
+    border-radius: 10px;
+    border:none;
+    padding:10px;
+}
+
+.input-box {
+    display: flex;
+    align-items: center;
+    gap:10px;
+    margin:20px;
+  }
+  
+  .input-box .content-edit {
+    flex: 1;
+  }
+  
+  .input-box .interact-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    transition: all 0.3s ease;
+  }
+  
+  .input-box .input-expanded .interact-container {
+    display: none;
+  }
+  
+  .input-box .input-expanded .content-edit {
+    flex: 2;
+  }
+  
+
+
+
+.comments-container {
+    padding: 16px;
+}
+
+
+body > div.container-scroller > div > div > div > div > div:nth-child(2) > div > div.interaction-container > div.note-scroller{
+    transition: scroll .4s;
+    overflow-y: scroll;
+    flex-grow: 1;
+}
+
+body > div.container-scroller > div > div > div > div > div:nth-child(2) > div > div.interactions.engage-bar{
+    padding: 16px 16px 0;
+    flex-basis: unset;
+    height: unset;
+    border-top: 1px solid #d4d4d45a;
+
+}
+
+body > div.container-scroller > div > div > div > div {
+    display: flex;
+    box-shadow: 5px 5px 40px rgb(186 215 255 / 55%);
+    border-radius: 20px;
+    transform-origin: left top;
+    justify-content: center;
+    align-items: center;
+}
+
+body > div.container-scroller > div > div > div > div > div {
+    width: 46%!important;
+}
+
+body > div.container-scroller > div > div > div > div > div{
+    margin: 10px auto;
+}
+
+body > div.container-scroller > div > div > div > div > div:nth-child(2) > div > div.interaction-container {
+width:100%!important;
+}
+
+body > div.container-scroller > div > div > div > div > div:nth-child(2) > div.auth-form-light.text-left.py-5.px-4.px-sm-5 > div > div > div > div.info {
+    margin-left: 10px;
+    gap: 10px!important;;
+}
+
+body > div.container-scroller > div > div > div > div > div:nth-child(2) > div > div.interaction-container > div.author-container > div > div.info > a.name > span{
+    font-weight:normal;
+}
+
+
+#detail-title{
+    font-size: 20px!important;
+}
+
+body > div.container-scroller > div > div > div > div > div:nth-child(2) > div > div.interaction-container > div.note-scroller > div.note-content{
+    padding: 10px 20px;
+}
+
+
+body > div.container-scroller > div > div > div > div > div:nth-child(2){
+    border-left: 1px solid #d4d4d45a;
+}
+
+
+#detail-desc > span{
+    line-height: 1.6rem;
+}
+
+body > div.container-scroller > div > div > div > div > div {
+    height: fit-content;
+    min-height: 600px;
+}
+
+body {
+    height:auto;
+    background-color: white;
+}
+
+/*清除默认边距*/
+*{
+	margin: 0;
+	padding: 0;
+}
+/*设置html标签高度为100%，body高度为100%*/
+html,body{
+	height: 100%!important;
+}
+
+body > div.container-scroller > div > div > div > div > div:nth-child(1) > img {
+    margin: 20px auto!important;
+}
+
+body > div.container-scroller > div > div > div > div > div:nth-child(2) > div > div.interaction-container > div.author-container{
+    gap:15%;
+}
+
+#comment-input.expanded {
+    flex-grow: 1; /* 或者使用其他方法来让输入框变长 */
+}
+
+#send-comment, #cancel-comment {
+    display: inline-block; /* 当需要显示时 */
+}
+
+/* 基础按钮样式 */
+#send-comment, #cancel-comment {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+/* 发送按钮样式 */
+#send-comment {
+    background-color: rgb(43 159 255); 
+    color: white;
+}
+
+/* 发送按钮悬停效果 */
+#send-comment:hover {
+    background-color: rgba(43,159,255,0.7);
+}
+
+body > div.container-scroller > div > div > div > div > div:nth-child(2) > div > div.interaction-container > div.author-container > div.author-wrapper.border{
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.parent-comment {
+    border-bottom: None!important;
+}
+
+.comment-item{
+    border-bottom:1px solid #8a8a8a32;
+    padding-top:10px;
+
+}
+
+body > div.container-scroller > div > div > div > div > div:nth-child(2) > div > div > div.note-scroller > div.comments-el{
+    height:300px;
+    overflow: scroll;
+}
+
+body > div.container-scroller > div > div > div > div > div {
+    height: 100vh;
+    min-height: 600px;
+    margin-top: 0;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+input#comment-input {
+    padding: 8px 0;
+    border-radius: 10px;
+    border-color: #366fffd8;
+}
+
+.comment-item > div > div.right > div.author-wrapper > div > a{
+    color:#0055ff7c;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.author-wrapper {
+    padding: 0!important;
+
+}
+
+
+body > div.container-scroller > div > div > div > div > div:nth-child(2) > div > div.interaction-container {
+margin-top:20px;
+}
+
+body > div.container-scroller > div > div > div > div > div:nth-child(1) > div > button{
+    padding: 10px 20px;
+    background-color: #ffdd01;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+body > div.container-scroller > div > div > div > div > div:nth-child(1) > div > button:hover,
+body > div.container-scroller > div > div > div > div > div:nth-child(1) > div > button:focus {
+    background-color: #f8e02dcc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  body > div.container-scroller > div > div > div > div > div:nth-child(1) > div > button:active {
+    background-color: #f8e02dcc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transform: translateY(2px);
+  }
+  
+
+  #back-button{
+    position: absolute;
+    right:5%;
+  }
+  
+
+  .note-content {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 0px!important;
+    border-radius: 5px;
+}
+
+.form-control, .dataTables_wrapper select {
+    border: 1px solid #f3f3f3;
+    font-weight: 400;
+    font-size: 0.875rem;}

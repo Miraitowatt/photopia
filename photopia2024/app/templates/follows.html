@@ -1,0 +1,22 @@
+
+                            {% for follow, user in follow_records %}
+                            <div class="container">
+                                <a href="/personal/{{ user.user_id }}" class="user-avatar" target="_blank">
+                                    <img class="avatar-item" src="{{ user.photo }}" alt="{{ user.name }}">
+                                </a>
+                                <div class="main">
+                                    <div class="info">
+                                        <div class="user-info">
+                                            <a href="/personal/{{ user.user_id }}" target="_blank">{{ user.name }}</a>
+                                        </div>
+                                        <div class="interaction-hint">
+                                            <span>开始关注你</span>
+                                            <span class="interaction-time">{{ follow.follow_time }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+            
+                                </div>
+                            </div>
+                            {% endfor %}
+                            

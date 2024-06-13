@@ -1,0 +1,42 @@
+{% for like, user, artwork in likes %}
+<div class="container">
+    <a href="/personal/{{ user.user_id }}" class="user-avatar" target="_blank">
+        <img class="avatar-item" src="{{ user.photo }}"></a>
+    <div class="main">
+        <div class="info">
+            <div class="user-info">
+                <a href="/personal/{{ user.user_id }}" target="_blank">{{ user.name }}</a>
+            </div>
+            <div class="interaction-hint">
+                <span>赞了你的作品</span>
+                <span class="interaction-time">{{ like.like_time }}</span>
+            </div>
+        </div>
+        <div class="extra">
+            <img src="{{ artwork.artwork_picture }}" class="extra-image">
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% for collect, user, artwork in collects %}
+<div class="container">
+    <a href="/personal/{{ user.user_id }}" class="user-avatar" target="_blank">
+        <img class="avatar-item" src="{{ user.photo }}" alt="用户头像"></a>
+    <div class="main">
+        <div class="info">
+            <div class="user-info">
+                <a href="/personal/{{ user.user_id }}" target="_blank">{{ user.name }}</a>
+            </div>
+            <div class="interaction-hint">
+                <span>收藏了你的作品</span>
+                <span class="interaction-time">{{ collect.collect_time }}</span>
+            </div>
+        </div>
+        <div class="extra">
+            <img src="{{ artwork.artwork_picture }}" alt="作品图片" class="extra-image">
+        </div>
+    </div>
+</div>
+{% endfor %}
+                            

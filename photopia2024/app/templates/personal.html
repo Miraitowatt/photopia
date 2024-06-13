@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        PHOTOPIA-个人页
+    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/a.min.css">
+    <link rel="stylesheet" href="/static/css/a.css">
+    <link rel="stylesheet" href="/static/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="/static/css/style1.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/bootstrap4.css">
+    <link rel="stylesheet" href="/static/css/worklist1.css">
+    <link rel="stylesheet" href="/static/css/worklist2.css">
+    <link rel="stylesheet" href="/static/css/app.css">
+    <link rel="stylesheet" href="/static/css/user.css">
+    <link rel="stylesheet" href="/static/css/a.min.css">
+    <link rel="stylesheet" href="/static/css/font.css">
+    <link rel="shortcut icon" href="/static/img/logo-mini.svg" />
+    <style>
+        a{
+  font-family: 'Dingtalk Jinbuti', sans-serif; 
+  font-weight: 300!important;
+}
+
+    </style>
+</head>
+<body>
+    <div class=" container-scroller">
+        <!--这是头部导航栏-->
+        <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="navbar-brand-wrapper d-flex justify-content-center">
+                <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
+                    <a class="navbar-brand brand-logo" href="/index"><img src="/static/img/logo.svg" alt="logo"></a>
+                    <a class="navbar-brand brand-logo-mini" href="/index"><img src="/static/img/logo-mini.svg"
+                            alt="logo"></a>
+                </div>
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+                <ul class="navbar-nav mr-lg-4 w-100">
+                    <li class="nav-item nav-search d-none d-lg-block w-100">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="search">
+                                    <img class="bi bi-search" src="/static/img/search.png" style="width:3.5%">
+                                <input type="text" class="form-control" id="search-input" placeholder="搜索更多.."
+                                aria-label="search" aria-describedby="search" style="font-family: 'Dingtalk Jinbuti';font-weight: 100;color: #000000c2;"></span>
+                            </div>
+                            
+
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav navbar-nav-right">
+
+                    <li class="nav-item nav-profile dropdown">
+                        <a class="nav-link" href="/edit_userinfo" data-toggle="dropdown" id="profileDropdown">
+                            <img src="{{photo}}" />
+                            <span class="nav-profile-name" style="font-family: 'Dingtalk Jinbuti';font-weight: 100;color: #000000c2;">你好，{{current_user.name}} !</span>
+                        </a>
+                    </li>
+                </ul>
+
+
+            </div>
+        </nav>
+        
+        <div class="container-fluid page-body-wrapper">
+            <!--这是左侧导航栏-->
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link left-nav" href="/index">
+                            <img src="/static/img/home.png" style="width:36%;padding-right:10%">
+                            <span class="menu-title ding">主页</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link left-nav" data-toggle="collapse" href="/resources" aria-expanded="false"
+                            aria-controls="ui-basic">
+                            <img src="/static/img/ground.png" style="width:36%;padding-right:10%">
+                            <span class="menu-title ding">广场</span>
+
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link left-nav" href="/publish">
+                            <img src="/static/img/publish.png" style="width:36%;padding-right:10%">
+                            <span class="menu-title ding">发布</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link left-nav" href="/message">
+                            <img src="/static/img/message.png" style="width:36%;padding-right:10%">
+                            <span class="menu-title ding">消息</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link left-nav active-nav" href="/personal">
+                            <img src="/static/img/me.png" style="width:36%;padding-right:10%">
+                            <span class="menu-title ding">我</span>
+                        </a>
+                    </li>
+                    {% if current_user.power==2 %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/users">
+                            <img src="/static/img/admin.png" style="width:36%;padding-right:10%">
+                                <span class="menu-title ding">&nbsp管理界面</span>
+                        </a>
+                    </li>
+                    {%endif%}
+
+                </ul>
+            </nav>
+            <!--这是个人主页-->
+            <div class="main-panel">
+                <main role="main">
+                    <!--这是个人信息-->
+                    <div class="container account-center-header">
+                        <div class="avatar account-center-header__avatar avatar__xxl"><img src="{{home_user.photo}}"
+                                class="avatar__img">
+                             
+                        </div>
+                        <div class="account-center-user">
+                            <div class="account-center-user__header">
+                                <div class="account-center-user__title">
+                                    <span class="account-center-user__name">{{home_user.name}}</span>
+                                    <!--个人等级-->
+                                    <svg class="img-icon account-center-user__level account-center-user__level--self"
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="12" fill="#FFEB3B" />
+                                        <text x="50%" y="50%" text-anchor="middle" fill="#000" font-size="15px"
+                                            font-family="Arial" dy=".3em">Lv.{{home_user.power}}</text>
+                                    </svg>
+
+                                    <!--编辑资料-->
+                                </div>
+                                <div class="account-center-header__buttons">
+                                    <div class="button account-center-header__edit button-outlined button-md">
+                                        <a class="button__button" href="/edit_userinfo">编辑资料</a>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="account-center-user__audit"><span
+                                    class="account-center-user__uid">ID:{{home_user.user_id}}
+                                    {% if home_user.gender %}
+
+                                    <!-- 男生图标 -->
+                                    <svg t="1702656108702"
+                                        class="img-icon account-center-user__level account-center-user__level--self"
+                                        viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                        p-id="5346" width="200" height="200">
+                                        <path d="M512 671.67m-160 0a160 160 0 1 0 320 0 160 160 0 1 0-320 0Z"
+                                            fill="#FFFFFF" p-id="5347"></path>
+                                        <path d="M512 671.67m-160 0a160 160 0 1 0 320 0 160 160 0 1 0-320 0Z"
+                                            fill="#FFFFFF" p-id="5348"></path>
+                                        <path
+                                            d="M670.39 513.28c-34.67-34.67-78.7-56.58-126.39-63.35V235.05l83.3 83.29c12.44 12.45 32.81 12.45 45.25 0 12.45-12.44 12.45-32.81 0-45.25L536.79 137.32c-6.46-6.46-15.06-9.56-23.57-9.31-0.4-0.01-0.81-0.02-1.22-0.02-0.25 0-0.51 0-0.76 0.01a0.064 0.064 0 0 0-0.06 0c-8.3-0.09-16.62 3.02-22.92 9.32L352.49 273.09c-12.44 12.44-12.44 32.81 0 45.25 12.45 12.45 32.81 12.45 45.26 0L480 236.09v213.84c-47.69 6.77-91.72 28.68-126.39 63.35C311.3 555.59 288 611.84 288 671.67c0 59.84 23.3 116.09 65.61 158.4 42.31 42.3 98.56 65.6 158.39 65.6s116.08-23.3 158.39-65.6C712.7 787.76 736 731.51 736 671.67c0-59.83-23.3-116.08-65.61-158.39zM512 831.67c-88.37 0-160-71.63-160-160 0-88.36 71.63-160 160-160s160 71.64 160 160c0 88.37-71.63 160-160 160z"
+                                            fill="#2B97D0" p-id="5349"></path>
+                                    </svg>
+
+                                    {% else %}
+                                    <!-- 女生图标 -->
+                                    <svg t="1702656071802"
+                                        class="img-icon account-center-user__level account-center-user__level--self"
+                                        viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                        p-id="4317" width="200" height="200">
+                                        <path
+                                            d="M596.591304 592.13913c129.113043-26.713043 231.513043-142.469565 231.513044-280.486956 0-155.826087-129.113043-284.93913-284.939131-284.939131S258.226087 155.826087 258.226087 311.652174c0 138.017391 97.947826 253.773913 231.513043 280.486956V712.347826H302.747826v106.852174h186.991304v164.730435h106.852174v-160.278261h178.086957v-106.852174h-178.086957v-124.66087z m-53.426087-97.947826c-97.947826-4.452174-178.086957-80.13913-178.086956-178.086956s80.13913-178.086957 178.086956-178.086957 178.086957 80.13913 178.086957 178.086957-80.13913 178.086957-178.086957 178.086956z"
+                                            fill="#FF6779" p-id="4318"></path>
+                                    </svg>
+                                    {% endif %}
+                                </span>
+                                
+                            </div>
+                            <a href="/ys/article/17761166" class="router-link" target="_blank"></a>
+                            <div class="account-center-user__intro">
+                                <p>个人描述：{{home_user.self_description}}</p>
+                            </div>
+
+                            
+                            <div class="account-center-header__data">
+                                <div class="account-center-header__data-item">
+                                    <span class="account-center-header__data-num">{{followers_count}}</span>
+                                    <div class="account-center-header__data-label">粉丝</div>
+                                </div>
+                                <div class="account-center-header__data-item">
+                                    <span class="account-center-header__data-num">{{follows_count}}</span>
+                                    <div class="account-center-header__data-label">关注</div>
+                                </div>
+                                <div class="account-center-header__data-item">
+                                    <span class="account-center-header__data-num">{{total_likes_collects}}</span>
+                                    <div class="account-center-header__data-label">获赞与收藏</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--这是筛选条-->
+                    <div class="reds-sticky-box user-page-sticky"
+                        style="--680fbd4c: all 0.4s cubic-bezier(0.2, 0, 0.25, 1) 0s;">
+                        <div class="reds-sticky">
+                            <div class="tertiary center reds-tabs-list reds-tabs-list" style="padding:0px 12px;">
+                                <div class="reds-tab-item active"
+                                    style="padding:0px 16px;margin-right:0px;font-size:16px;">
+                                    <a class="nav-link dynamic-load" id="works" href="#">笔记</a></div>
+                                <div class="reds-tab-item" style="padding:0px 16px;margin-right:0px;font-size:16px;">
+                                    <a id="like-works" class="nav-link dynamic-load" href="#">点赞</a>
+                                </div>
+                                <div class="reds-tab-item" style="padding:0px 16px;margin-right:0px;font-size:16px;">
+                                    <a id="collect-works" class="nav-link dynamic-load" href="#">收藏</a></div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!--这是作品列表-->
+                    <div id="content">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="card-columns">
+                                    <!--这是作品-->
+                                    {% for work in works %}
+                                    <div class="card card-pin">
+                                        <a href="/work_detail/{{work.artwork_id}}">
+                                            <img class="card-img" src="{{work.artwork_picture}}" alt="Card image">
+                                            <div class="card-footer"><a href="/work_detail/{{work.artwork_id}}" class="card-title title">
+                                                    <span>{{work.artwork_name}}
+                                                    </span></a>
+                                                <div class="author-wrapper">
+                                                    <a href="/personal/{{work.user_id}}" class="author" target="_blank">
+                                                        <img crossorigin="anonymous" class="author-avatar" src="{{author_info[work.artwork_id].photo}}">
+                                                        <span class="card-name">{{ author_info[work.artwork_id].name }}</span></a><span
+                                                        class="like-wrapper like-active"><span class="like-lottie"
+                                                            style="width: 16px; height: 16px;"></span>
+                                                        <!--这是点赞图标-->
+                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                            class="icon like-button {% if likes_status[work.artwork_id] %}liked{% endif %}"
+                                                            data-artwork-id="{{ work.artwork_id }}" width="24" height="24" viewBox="0 0 24 24"
+                                                            stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                                                            stroke-linejoin="round">
+                                                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                                        </svg><span class="count">{{ likes_counts[work.artwork_id]}}</span></span>
+                                                </div>
+                                            </div>
+                        
+                                        </a>
+                                    </div>
+                        
+                                    {% endfor %}
+                        
+                        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </main>
+            </div>
+
+        </div>
+        <script src="vendors/base/vendor.bundle.base.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                // 动态加载内容的函数
+                function loadContent(url, container) {
+                    $.ajax({
+                        url: url,
+                        type: 'GET',
+                        beforeSend: function() {
+                            // 显示加载提示
+                            $(container).html('<div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div>');
+                        },
+                        success: function(response) {
+                            $(container).html(response);
+                            window.history.pushState(null, '', url); // 更新URL但不刷新页面
+                        },
+                        error: function(error) {
+                            console.error('Error:', error);
+                        }
+                    });
+                }
+                
+                // 使用事件委托绑定点赞按钮事件
+                $('#content').on('click', '.like-button', function(e) {
+                    e.preventDefault();
+                    var artworkId = $(this).data('artwork-id');
+                    var $likeIcon = $(this);
+                    var $likeCount = $likeIcon.siblings('.count');
+            
+                    // 发起AJAX POST请求到后端点赞路由
+                    $.ajax({
+                        url: '/like/' + artworkId,
+                        type: 'POST',
+                        success: function(data) {
+                            if(data.result === 'liked'){
+                                $likeIcon.addClass('liked');
+                                $likeCount.text(data.likes_count);
+                            } else if(data.result === 'unliked'){
+                                $likeIcon.removeClass('liked');
+                                $likeCount.text(data.likes_count);
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error("Error occurred: " + error);
+                        }
+                    });
+                });
+              
+                // 绑定动态内容加载事件监听器
+                $('a.dynamic-load').on('click', function (e) {
+                    // 防止默认的导航行为
+                    e.preventDefault();
+            
+                    // 选中当前激活的标签，移除 'active' 类，然后为当前点击的标签添加 'active' 类
+                    $('.active').removeClass('active');
+                    $(this).closest('div').addClass('active');
+            
+                    // 根据点击的标签，加载对应的内容
+                    var id = $(this).attr('id');
+                    
+                    var url = '';
+                    switch (id) {
+                        case 'works':
+                            url = '/personal/works';
+                            break;
+                        case 'like-works':
+                            url = '/personal/likes';
+                            break;
+                        case 'collect-works':
+                            url = '/personal/collects';
+                            break;
+                        default:
+                            return;
+                    }
+            
+                    loadContent(url, '#content');
+                });
+            });
+            </script>
+            
+            
+</body>
+
+
+</html>

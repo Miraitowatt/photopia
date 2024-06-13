@@ -1,0 +1,281 @@
+<!doctype html>
+<html>
+    <head>      
+        <meta charset="utf-8" />
+        <title>PHOTOPIA-评论管理</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="static/img/logo-mini.svg">
+        <link href="static/css-admin/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+        <link href="static/css-admin/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+        <link href="static/css-admin/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <link href="static/css-admin/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="static/css-admin/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body data-topbar="dark">
+
+       <div id="layout-wrapper">
+        <!-- 顶部导航栏 -->   
+        <header id="page-topbar">
+            <div class="navbar-header">
+                <div class="d-flex">
+                    <!-- LOGO -->
+                    <div class="navbar-brand-box">
+                        <a href="/index" class="logo logo-light">
+                            <span class="logo-sm">
+                                <img src="static/img/logo-mini.svg" alt="" height="40">
+                            </span>
+                            <span class="logo-lg">
+                                <img src="static/img/admin-logo.svg" alt="" height="36">
+                            </span>
+                        </a>
+                    </div>
+
+                    <button type="button" class="btn btn-sm px-3 font-size-16 header-item" id="vertical-menu-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#fff" class="bi bi-list" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                          </svg>
+                    </button>
+
+                    <form class="app-search d-none d-lg-block">
+                        <div class="position-relative">
+                            <input type="search" class="form-control" placeholder="Search...">
+                            <button class="btn btn-primary" type="button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-search" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                  </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="d-flex">
+
+                    <div class="dropdown d-inline-block d-lg-none ms-2">
+                        <button type="button" class="btn header-item" id="page-header-search-dropdown"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i data-feather="search" class="icon-lg"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                            aria-labelledby="page-header-search-dropdown">
+    
+                            <form class="p-3">
+                                <div class="form-group m-0">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Search ..." aria-label="Search Result">
+
+                                        <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>         
+                    
+
+                    <div class="dropdown d-inline-block">
+                        <button type="button" class="btn header-item bg-soft-light border-start border-end" id="page-header-user-dropdown"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="rounded-circle header-profile-user" src="{{photo}}"
+                                alt=""/>
+                            <span class="d-none d-xl-inline-block ms-1 fw-medium">{{current_user.user_name}}</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                              </svg>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <!-- 用户头像和名字-->
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/login">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#1c84ee" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                                <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                              </svg> 
+                              退出登录</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <!-- 左侧导航栏 -->
+        <div class="vertical-menu">
+            <div data-simplebar class="h-100">
+                <div id="sidebar-menu">
+                    <ul class="metismenu list-unstyled" id="side-menu">
+                        <li class="menu-title" data-key="t-menu">Users</li>
+
+                        <li>
+                            <a href="/users" class="">
+                                <i data-feather="users"></i>
+                                <span>用户管理</span>
+                            </a>
+
+                        </li>
+                        <li class="menu-title" data-key="t-menu">Announcement</li>
+
+                        <li>
+                            <a href="javascript: void(0);" class="">
+                                <i data-feather="trello"></i>
+                                <span data-key="t-tasks">公告管理</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">                       
+                                <li><a href="/publish_notice">发布公告</a></li>
+                                <li><a href="/admin_notice">修改公告</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li class="menu-title mt-2" data-key="t-components">Contents</li>
+
+                        <li>
+                            <a href="javascript: void(0);" class="">
+                                <i data-feather="pie-chart"></i>
+                                <span data-key="t-tables">作品管理</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">                       
+                                <li><a href="/works" data-key="t-data-tables">编辑作品信息</a></li>
+                                <li><a href="/admin_visualization" data-key="t-editable-table">数据看板</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="/admin_comments" class="active">
+                                <i data-feather="sliders"></i>
+                                <span>评论管理</span>
+                            </a>
+                        </li>
+
+                        <li class="menu-title mt-2" data-key="t-components">Others</li>
+
+                        <li>
+                            <a href="/setting">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
+                                    <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+                                  </svg>
+                                <span data-key="t-tables">设置</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                    
+                </div>
+            </div>
+        </div>
+            <!-- 内容列表 -->
+            <div class="main-content">
+                <div class="page-content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                    <h4 class="mb-sm-0 font-size-18">评论管理</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                       <div class="row">
+                           <div class="col-lg-12">
+                               <div class="card">
+                                   <div class="card-body">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <h5 class="card-title">评论列表 <span class="text-muted fw-normal ms-2">({{comment_counts}})</span></h5>
+                                                </div>
+                                            </div>
+                
+                                            <div class="col-md-6">
+                                                <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
+                                                    
+                                                </div>
+                
+                                            </div>
+                                        </div>
+
+                                        <div class="table-responsive mb-4">
+                                            <table class="table align-middle datatable dt-responsive table-check nowrap" style="border-collapse: collapse; border-spacing: 0 8px; width: 100%;">
+                                                
+                                                <thead>
+                                                <tr>
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">内容</th>
+                                                    <th scope="col">用户</th>
+                                                    <th scope="col">发布时间</th>
+                                                    <th style="width: 80px; min-width: 80px;">操作</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for item in comments_with_users %}
+                                                    <tr>
+                                                        <td>{{ item.comment.comment_id }}</td>
+                                                        <td>{{ item.comment.comment_content }}</td>
+                                                        <td>
+                                                            <img src="{{ item.user.photo }}" alt="" class="avatar-sm rounded-circle me-2">
+                                                            <a href="" class="text-body">{{ item.user.name }}</a>
+                                                        </td>
+                                                        <td>{{ item.comment.comment_time }}</td>
+                                                        <td>
+                                                            <div class="dropdown">
+                                                                <button class="btn btn-link font-size-16 shadow-none py-0 text-muted dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+                                                                        <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                                                                      </svg>
+                                                                </button>
+                                                                <ul class="dropdown-menu dropdown-menu-end">
+                                                                    <li><a class="dropdown-item" href="{{ url_for('delete_comment', comment_id=item.comment.comment_id) }}">删除</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                                
+                                            </table>
+                                        </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                        
+                    </div>
+                </div>              
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <script>document.write(new Date().getFullYear())</script> © Photopia.
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-sm-end d-none d-sm-block">
+                                    Design & Develop by <a href="#" class="">李佳芸 冉皓文 赵子婷</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+
+        </div>
+        <script src="static/js-admin/jquery.min.js"></script>
+        <script src="static/js-admin/bootstrap.bundle.min.js"></script>
+        <script src="static/js-admin/metisMenu.min.js"></script>
+        <script src="static/js-admin/simplebar.min.js"></script>
+        <script src="static/js-admin/waves.min.js"></script>
+        <script src="static/js-admin/feather.min.js"></script>
+        <script src="static/js-admin/pace.min.js"></script>
+        <script src="static/js-admin/jquery.dataTables.min.js"></script>
+        <script src="static/js-admin/dataTables.bootstrap4.min.js"></script>
+        <script src="static/js-admin/dataTables.responsive.min.js"></script>
+        <script src="static/js-admin/responsive.bootstrap4.min.js"></script>
+        <script src="static/js-admin/datatable-pages.init.js"></script>
+        <script src="static/js-admin/app.js"></script>
+
+    </body>
+</html>

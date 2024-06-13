@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'Dingtalk Jinbuti';
+    src: url('/static/fonts/DINGTALK JINBUTI.TTF') format('truetype');
+}
+
+.ding{
+    font-family: 'Dingtalk Jinbuti', sans-serif; 
+    font-weight: 500;
+    color:#787878
+}

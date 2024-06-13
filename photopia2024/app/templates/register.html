@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>PHOTOPIA-注册页</title>
+  <link rel="stylesheet" href="static/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="static/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="static/css/login.css">
+  <link rel="shortcut icon" href="static/img/logo-mini.svg" />
+</head>
+<body>
+  <div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+      <div class="content-wrapper d-flex align-items-center auth px-0">
+        <div class="row w-100 mx-0">
+          <div class="col-lg-4 mx-auto">
+            <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+              <div class="brand-logo">
+                <img src="static/img/logo.svg" alt="logo">
+              </div>
+              <h5 style="
+              font-family: 'Dingtalk Jinbuti', sans-serif; 
+              font-weight: 100;
+              margin-left:10px;
+              color:#323232;">欢迎注册photopia</h5>
+              {% if msg %}
+                    <div class="bd-callout bd-callout-info" style="color: red;">
+                        {{ msg }}
+                    </div>
+                    {% endif %}
+              <h6 class="font-weight-light"> </h6>
+              <form action="/register" method="POST" class="pt-3">
+                <div class="form-group">
+                  <input type="text" class="form-control form-control-lg" id="exampleInputUsername" name="username" placeholder="用户名">
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" name="password" placeholder="密码">
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control form-control-lg" id="exampleInputPassword2" name="repassword" placeholder="确认密码">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control form-control-lg" id="exampleInputName" name="name" placeholder="昵称">
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" name="email" placeholder="邮箱">
+                </div>
+                
+                <div class="mt-3">
+                  <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="/login">注册</button>
+                </div>
+                <div class="my-2 d-flex justify-content-between align-items-center">
+                  
+                </div>
+                
+                <div class="text-center mt-4 font-weight-light">
+                  已有账号? <a href="/login" class="text-primary">去登陆</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

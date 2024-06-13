@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        PHOTOPIA-主页
+    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/a.min.css">
+    <link rel="stylesheet" href="static/css/a.css">
+    <link rel="stylesheet" href="static/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="static/css/style1.css">
+    <link rel="stylesheet" href="static/css/index.css">
+    <link rel="stylesheet" href="static/css/bootstrap4.css">
+    <link rel="stylesheet" href="static/css/worklist1.css">
+    <link rel="stylesheet" href="static/css/worklist2.css">
+    <link rel="stylesheet" href="static/css/font.css">
+    <link rel="shortcut icon" href="static/img/logo-mini.svg" />
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1046.0" data-gr-ext-installed class>
+    <div class=" container-scroller">
+        <!--这是头部导航栏-->
+        <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="navbar-brand-wrapper d-flex justify-content-center">
+                <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
+                    <a class="navbar-brand brand-logo" href="/index"><img src="static/img/logo.svg" alt="logo"></a>
+                    <a class="navbar-brand brand-logo-mini" href="/index"><img src="static/img/logo-mini.svg"
+                            alt="logo"></a>
+                </div>
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+                <ul class="navbar-nav mr-lg-4 w-100">
+                    <li class="nav-item nav-search d-none d-lg-block w-100">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="search">
+                                    <img class="bi bi-search" src="static/img/search.png" style="width:3.5%">
+                                <input type="text" class="form-control" id="search-input" placeholder="搜索更多.."
+                                aria-label="search" aria-describedby="search" style="font-family: 'Dingtalk Jinbuti';font-weight: 100;color: #000000c2;"></span>
+                            </div>
+                            
+
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav navbar-nav-right">
+
+                    <li class="nav-item nav-profile dropdown">
+                        <a class="nav-link" href="/edit_userinfo" data-toggle="dropdown" id="profileDropdown">
+                            <img src="{{photo}}" />
+                            <span class="nav-profile-name" style="font-family: 'Dingtalk Jinbuti';font-weight: 100;color: #000000c2;">你好，{{username}} !</span>
+                        </a>
+                    </li>
+                </ul>
+
+
+            </div>
+        </nav>
+        <div class="container-fluid page-body-wrapper">
+            <!--这是左侧导航栏-->
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link left-nav active-nav" href="/index">
+                            <img src="static/img/home.png" style="width:36%;padding-right:10%">
+                            <span class="menu-title ding">主页</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link left-nav" data-toggle="collapse" href="/resources" aria-expanded="false"
+                            aria-controls="ui-basic">
+                            <img src="static/img/ground.png" style="width:36%;padding-right:10%">
+                            <span class="menu-title ding">广场</span>
+
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link left-nav" href="/publish">
+                            <img src="static/img/publish.png" style="width:36%;padding-right:10%">
+                            <span class="menu-title ding">发布</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link left-nav" href="/message">
+                            <img src="static/img/message.png" style="width:36%;padding-right:10%">
+                            <span class="menu-title ding">消息</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link left-nav" href="/personal/{{current_user.user_id}}">
+                            <img src="static/img/me.png" style="width:36%;padding-right:10%">
+                            <span class="menu-title ding">我</span>
+                        </a>
+                        {% if current_user.power==2 %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/users">
+                                <img src="static/img/admin.png" style="width:36%;padding-right:10%">
+                                <span class="menu-title ding">&nbsp管理界面</span>
+                            </a>
+                        </li>
+                        {%endif%}
+
+                </ul>
+            </nav>
+            <!--这是作品列表-->
+            <div class="main-panel">
+                <main role="main">
+                    <section class="mt-4 mb-5">
+                        <div class="container mb-4">
+                            <div class="row">
+                                <nav class="navbar navbar-expand-lg navbar-light bg-white pl-2 pr-2">
+                                    <button class="navbar-light navbar-toggler" type="button" data-toggle="collapse"
+                                        data-target="#navbarsExplore" aria-controls="navbarsDefault"
+                                        aria-expanded="false" aria-label="Toggle navigation">
+                                        <span class="navbar-toggler-icon"></span>
+                                    </button>
+                                    <div class="collapse navbar-collapse" id="navbarsExplore">
+                                        <ul class="navbar-nav">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#" style="
+                                                font-family: 'Dingtalk Jinbuti', sans-serif; 
+                                                font-weight: 300;
+                                                font-size:1rem;">推荐</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#" style="
+                                                font-family: 'Dingtalk Jinbuti', sans-serif; 
+                                                font-weight: 300;
+                                                font-size:1rem;" data-type="1">风光</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#" style="
+                                                font-family: 'Dingtalk Jinbuti', sans-serif; 
+                                                font-weight: 300;
+                                                font-size:1rem;" data-type="2">人文</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#" style="
+                                                font-family: 'Dingtalk Jinbuti', sans-serif; 
+                                                font-weight: 300;
+                                                font-size:1rem;" data-type="3">静物</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#" style="
+                                                font-family: 'Dingtalk Jinbuti', sans-serif; 
+                                                font-weight: 300;
+                                                font-size:1rem;" data-type="4">人像</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#" style="
+                                                font-family: 'Dingtalk Jinbuti', sans-serif; 
+                                                font-weight: 300;
+                                                font-size:1rem;" data-type="5">其他</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
+                        <div id="works-list-container">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="card-columns">
+                                        <!--这是作品-->
+                                        {% for work in works %}
+                                        <div class="card card-pin">
+                                            <a href="/work_detail/{{work.artwork_id}}">
+                                                <img class="card-img" src="{{work.artwork_picture}}" alt="Card image">
+                                                <div class="card-footer"><a href="/work_detail/{{work.artwork_id}}"
+                                                        class="card-title title">
+                                                        <span>{{work.artwork_name}}
+                                                        </span>
+                                                        <span>{{work.artwork_time}}
+                                                        </span>
+                                                    </a>
+                                                    <div class="author-wrapper">
+                                                        <a href="/personal/{{work.user_id}}" class="author" target="_blank">
+                                                            <img crossorigin="anonymous" class="author-avatar"
+                                                                src="{{author_info[work.artwork_id].photo}}">
+                                                            <span class="card-name">{{ author_info[work.artwork_id].name
+                                                                }}</span></a><span
+                                                            class="like-wrapper like-active"><span class="like-lottie"
+                                                                style="width: 16px; height: 16px;"></span>
+                                                            <!--这是点赞图标-->
+                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                class="icon like-button {% if likes_status[work.artwork_id] %}liked{% endif %}"
+                                                                data-artwork-id="{{ work.artwork_id }}" width="24"
+                                                                height="24" viewBox="0 0 24 24" stroke-width="1.5"
+                                                                stroke="currentColor" fill="none" stroke-linecap="round"
+                                                                stroke-linejoin="round">
+                                                                <!-- ...SVG路径... -->
+                                                                <path
+                                                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                                            </svg><span data-v-6138c4f4 class="count">{{
+                                                                likes_counts[work.artwork_id]
+                                                                }}</span></span>
+                                                    </div>
+                                                </div>
+
+                                            </a>
+                                        </div>
+
+                                        {% endfor %}
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container mt-4">
+                                <div class="row">
+                                    <div id="pagination-container">
+                                        <ul class="pagination">
+                                            <!-- 上一页 -->
+                                            <li class="page-item {% if current_page <= 1 %}disabled{% endif %}">
+                                                <a class="page-link" href="#" aria-label="Previous"
+                                                    data-page="{{ current_page - 1 }}">
+                                                    <span aria-hidden="true">&laquo;</span>
+                                                </a>
+                                            </li>
+
+                                            <!-- 页码 -->
+                                            {% for num in range(1, total_pages + 1) %}
+                                            <li class="page-item {% if num == current_page %}active{% endif %}">
+                                           
+                                                <a class="page-link" href="#" data-page="{{ num }}">{{ num }}</a>
+                                            </li>
+                                            {% endfor %}
+
+                                            <!-- 下一页 -->
+                                            <li
+                                                class="page-item {% if current_page >= total_pages %}disabled{% endif %}">
+                                                <a class="page-link" href="#" aria-label="Next"
+                                                    data-page="{{ current_page + 1 }}">
+                                                    <span aria-hidden="true">&raquo;</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </main>
+            </div>
+
+        </div>
+        
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+
+                // 封装加载内容的函数
+                function loadContent(url) {
+                    $.ajax({
+                        url: url,
+                        type: 'GET',
+                        beforeSend: function () {
+                            // 显示加载提示
+                            $('#works-list-container').html('<div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div>');
+                        },
+                        success: function (response) {
+                            $('#works-list-container').html(response);
+                            window.history.pushState(null, '', url); // 更新URL但不刷新页面
+                            bindLikeButtons(); // 重新绑定点赞按钮的事件处理器
+                        },
+                        error: function (error) {
+                            console.error('Error:', error);
+                        }
+                    });
+                }
+
+                // 点赞
+                function bindLikeButtons() {
+                    $('.like-button').off('click').on('click', function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        var artworkId = $(this).data('artwork-id');
+                        var $likeIcon = $(this);
+                        var $likeCount = $likeIcon.siblings('.count');
+
+                        // 发起AJAX POST请求到后端点赞路由
+                        $.ajax({
+                            url: '/like/' + artworkId,
+                            type: 'POST',
+                            success: function (data) {
+                                if (data.result === 'liked') {
+                                    $likeIcon.addClass('liked');
+                                    $likeCount.text(data.likes_count);
+                                } else if (data.result === 'unliked') {
+                                    $likeIcon.removeClass('liked');
+                                    $likeCount.text(data.likes_count);
+                                }
+                            },
+                            error: function (xhr, status, error) {
+                                console.error("Error occurred: " + error);
+                            }
+                        });
+                    });
+                }
+
+                // 当文档加载完成后
+$(document).ready(function() {
+    // 默认激活筛选条中的“推荐”
+    $('a.nav-link').each(function() {
+        if ($(this).text().trim() === '推荐') {
+            $(this).addClass('active-type');
+        }
+    });
+});
+
+// 事件委托绑定带有 data-type 属性的 .nav-link 元素的点击事件
+$(document).on('click', 'a.nav-link[data-type]', function (e) {
+    e.preventDefault();
+    
+    // 移除所有 .nav-link 元素的 active-type 类
+    $('a.nav-link').removeClass('active-type');
+    
+    // 为当前点击的元素添加 active-type 类
+    $(this).addClass('active-type');
+    
+    var type = $(this).data('type');
+    var url = '/index?type=' + type;
+    loadContent(url);
+});
+
+// 特别为“推荐”链接设置事件委托
+$(document).on('click', 'a.nav-link:not([data-type])', function (e) {
+    // 检查是否是“推荐”链接
+    if ($(this).text().trim() === '推荐') {
+        e.preventDefault();
+        
+        // 移除所有 .nav-link 元素的 active-type 类
+        $('a.nav-link').removeClass('active-type');
+        
+        // 为“推荐”元素添加 active-type 类
+        $(this).addClass('active-type');
+        
+        var url = '/index';
+        loadContent(url);
+    }
+});
+
+
+                // 搜索
+                $('#search-input').on('keypress', function (e) {
+                    if (e.which == 13) {
+                        e.preventDefault();
+                        var query = $(this).val().trim();
+                        if (query) {
+                            var url = '/index?search=' + encodeURIComponent(query);
+                            loadContent(url);
+                        }
+                    }
+                });
+
+                // 分页
+                $(document).on('click', '.pagination .page-link', function (e) {
+                    e.preventDefault();
+                    var page = $(this).data('page');
+                    if (page) {
+                        var url = '/index?page=' + page;
+                        loadContent(url);
+                    }
+                });
+
+                
+
+                // 初次加载页面时绑定点赞按钮事件
+                bindLikeButtons();
+            });
+        </script>
+
+</body>
+
+</html>

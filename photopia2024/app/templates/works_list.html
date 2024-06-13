@@ -1,0 +1,72 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="card-columns">
+            <!--这是作品-->
+            {% for work in works %}
+            <div class="card card-pin">
+                <a href="/work_detail/{{work.artwork_id}}">
+                    <img class="card-img" src="{{work.artwork_picture}}" alt="Card image">
+                    <div class="card-footer"><a href="/work_detail/{{work.artwork_id}}" class="card-title title">
+                            <span>{{work.artwork_name}}
+                            </span>
+                            <span>{{work.artwork_time.strftime('%Y-%m-%d %H:%M')}}
+                            </span>
+                        </a>
+                        <div class="author-wrapper">
+                            <a href="/personal/work.user_id" class="author" target="_blank">
+                                <img crossorigin="anonymous" class="author-avatar" src="{{author_info[work.artwork_id].photo}}">
+                                <span class="card-name">{{ author_info[work.artwork_id].name }}</span></a><span
+                                class="like-wrapper like-active"><span class="like-lottie"
+                                    style="width: 16px; height: 16px;"></span>
+                                <!--这是点赞图标-->
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="icon like-button {% if likes_status[work.artwork_id] %}liked{% endif %}"
+                                    data-artwork-id="{{ work.artwork_id }}" width="24" height="24" viewBox="0 0 24 24"
+                                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+
+                                </svg><span data-v-6138c4f4 class="count">{{ likes_counts[work.artwork_id]
+                                    }}</span></span>
+                        </div>
+                    </div>
+
+                </a>
+            </div>
+
+            {% endfor %}
+
+
+
+        </div>
+    </div>
+</div>
+<div class="container mt-4">
+    <div class="row">
+        <div id="pagination-container">
+            <ul class="pagination">
+                <!-- 上一页 -->
+                <li class="page-item {% if current_page == 1 %}disabled{% endif %}">
+                    <a class="page-link" href="#" aria-label="Previous" data-page="{{ current_page - 1 }}">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+                <!-- 页码 -->
+                {% for num in range(1, total_pages + 1) %}
+                <li class="page-item {% if num == current_page %}active{% endif %}">
+                    <!-- 注意下方这行的 data-page 属性 -->
+                    <a class="page-link" href="#" data-page="{{ num }}">{{ num }}</a>
+                </li>
+                {% endfor %}
+
+                <!-- 下一页 -->
+                <li class="page-item {% if current_page >= total_pages %}disabled{% endif %}">
+                    <a class="page-link" href="#" aria-label="Next" data-page="{{ current_page + 1 }}">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

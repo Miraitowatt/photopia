@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PHOTOPIA-作品详情</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/work_detail.css') }}">
+
+<style>
+    .info {
+    display: flex;
+    align-items: center;
+}
+
+.date,
+.interactions {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.interactions {
+    margin-left: 10px;
+}
+
+</style>
+</head>
+
+<body>
+    <div class="container-scroller">
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+            <div class="content-wrapper d-flex align-items-center auth px-0">
+                <div class="row w-100 mx-0">
+                    <div>
+                        <div>
+                            <img src="{{work.artwork_picture}}">
+                    
+                        </div>
+                        <div>
+                            <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+
+                                <div class="interaction-container">
+                                    <div class="author-container">
+                                        <div class="author-wrapper border">
+                                            <div class="info">
+                                                <a href="/personal/{{author.user_id}}" class="" target="_blank">
+                                                    <img class="avatar-item" crossorigin="anonymous"
+                                                        src="{{author.photo}}" style="width: 40px; height: 40px;"></a>
+                                                <a href="/personal/{{author.user_id}}" class="name" target="_blank">
+                                                    <span class="username">{{author.name}}</span>
+                                                </a>
+                                            </div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div class="note-detail-follow-btn">
+                                                {% if not is_author %}
+                                                <button
+                                                    class="reds-button-new follow-button large primary follow-button"
+                                                    id="follow-btn" data-user-id="{{ author.user_id }}">
+                                                    <span class="reds-button-new-box"><span
+                                                            class="reds-button-new-text" style="font-weight:600;color:#fff;">{{ '已关注' if follow_status else
+                                                            '关注' }}</span></span>
+                                                </button>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+
+                                        <div id="back-button">
+                                            <a href="/index">
+                                                <img src="/static/img/back-btn.png" style="width:2rem">
+                                            </a>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="note-scroller">
+                                        <div class="note-content">
+                                            <div id="detail-title" class="title" style="
+                                            font-family: 'Dingtalk Jinbuti', sans-serif; 
+                                            font-weight: 500;
+                                                ">{{work.artwork_name}}</div>
+                                            <div id="detail-desc" class="desc">
+                                                <span>
+                                                    {{work.artwork_description}}
+                                                </span>
+                                            </div>
+                                            <div class="bottom-container">
+                                                <span class="date">{{work.artwork_time}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="divider interaction-divider"></div>
+                                        <div class="comments-el">
+                                            <div class="comments-container">
+                                                <div data-v-67ccc99c="" class="total">共 {{num_of_comments}} 条评论</div>
+                                                    {% for comment in work_comments %}
+                                                    <div id="comment-{{comment.comment_id}}" class="comment-item">
+                                                        <div class="comment-inner-container">
+                                                            <div class="avatar">
+                                                                <!-- 使用 comment_user_mapping 获取评论者头像 -->
+                                                                <a href="/personal/{{ comment_user_mapping[comment.comment_id].user_id }}" class="" target="_blank">
+                                                                    <img class="avatar-item" crossorigin="anonymous"
+                                                                        src="{{ comment_user_mapping[comment.comment_id].photo }}"
+                                                                        style="width: 40px; height: 40px;">
+                                                                </a>
+                                                            </div>
+                                                            <div class="right">
+                                                                <div class="author-wrapper">
+                                                                    <div class="author">
+                                                                        <!-- 使用 comment_user_mapping 获取评论者名称 -->
+                                                                        <a href="/personal/{{ comment_user_mapping[comment.comment_id].user_id }}" class="name" target="_blank">
+                                                                            {{ comment_user_mapping[comment.comment_id].name }}
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="content">{{ comment.comment_content }}</div>
+                                                                <!--评论内容-->
+                                                                <div class="info">
+                                                                    <div class="date">
+                                                                        <span>{{comment.comment_time}}</span>
+                                                                    </div>
+                                                                    <div class="interactions">
+                                                                        <div class="like">
+                                                                            <span class="like-wrapper like-active"
+                                                                                points="[object Object]"
+                                                                                track-data="[object Object]">
+                                                                                <span class="like-lottie"
+                                                                                    style="width: 16px; height: 16px;"></span>
+                                                                                <!--点赞图标-->
+                                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                    class="icon like-button {% if like_status[comment.comment_id] %}liked{% endif %}"
+                                                                                    width="24" height="24"
+                                                                                    viewBox="0 0 24 24"
+                                                                                    stroke-width="2"
+                                                                                    stroke="currentColor"
+                                                                                    fill="none"
+                                                                                    stroke-linecap="round"
+                                                                                    stroke-linejoin="round">
+                                                                                    <path stroke="none"
+                                                                                        d="M0 0h24v24H0z"
+                                                                                        fill="none" />
+                                                                                    <path
+                                                                                        d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                                                                                </svg>
+                                                                                <span
+                                                                                    class="count">{{ comment_likes_counts[comment.comment_id] }}</span></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                        <div class="interactions engage-bar">
+                                            <div class="engage-bar-container">
+                                                <div class="engage-bar">
+                                                    <div class="input-box">
+                                                        <div class="content-edit col-sm-9">
+                                                            <!-- 评论输入框 -->
+                                                            <input type="text" id="comment-input" class="form-control inner"
+                                                                placeholder="说点什么...">
+                                                        </div>
+                                                        <div class="interact-container">
+                                                            <div class="buttons engage-bar-style">
+                                                                <div class="left">
+                                                                    <!-- 点赞图标 -->
+                                                                    <span class="like-wrapper like-active"
+                                                                        points="[object Object]"
+                                                                        track-data="[object Object]">
+                                                                        <span data-v-6138c4f4="" class="like-lottie"
+                                                                            style="width: 24px; height: 24px;"></span>
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            class="icon {% if like_status %}liked{% endif %}"
+                                                                            width="24" height="24" viewBox="0 0 24 24"
+                                                                            stroke-width="2" stroke="currentColor"
+                                                                            fill="none" stroke-linecap="round"
+                                                                            stroke-linejoin="round">
+                                                                            <path stroke="none" d="M0 0h24v24H0z"
+                                                                                fill="none" />
+                                                                            <path
+                                                                                d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                                                                        </svg>
+                                                                        <span class="count">{{likes_count}}</span>
+                                                                    </span>
+                                                                    <!-- 收藏图标 -->
+                                                                    <span class="collect-wrapper">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            class="icon {% if collect_status %}collected{% endif %}"
+                                                                            width="24" height="24" viewBox="0 0 24 24"
+                                                                            stroke-width="2" stroke="currentColor"
+                                                                            fill="none" stroke-linecap="round"
+                                                                            stroke-linejoin="round">
+                                                                            <path stroke="none" d="M0 0h24v24H0z"
+                                                                                fill="none" />
+                                                                            <path
+                                                                                d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
+                                                                        </svg>
+                                                                        <span class="count">{{num_of_collects}}</span>
+                                                                    </span>
+                                                                    <!-- 评论图标 -->
+                                                                    <span data-v-3eba1daa="" class="chat-wrapper">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon"
+                                                                            width="24" height="24" viewBox="0 0 24 24"
+                                                                            stroke-width="2" stroke="currentColor"
+                                                                            fill="none" stroke-linecap="round"
+                                                                            stroke-linejoin="round">
+                                                                            <path stroke="none" d="M0 0h24v24H0z"
+                                                                                fill="none" />
+                                                                            <path
+                                                                                d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" />
+                                                                            <line x1="12" y1="12" x2="12" y2="12.01" />
+                                                                            <line x1="8" y1="12" x2="8" y2="12.01" />
+                                                                            <line x1="16" y1="12" x2="16" y2="12.01" />
+                                                                        </svg>
+                                                                        <span class="count">{{num_of_comments}}</span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <button id="send-comment" style="display: none;">发送</button>
+                                                    <button id="cancel-comment" style="display: none;">取消</button>
+                                                    </div>
+                                                    <!-- 评论发送和取消按钮，初始时不可见 -->
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+
+
+                                </div>
+
+
+                                <h6 class="font-weight-light"> </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+        // 获取当前 URL 的路径部分
+        var path = window.location.pathname;
+        var segments = path.split('/');
+        var artworkId = segments[segments.length - 1]; 
+
+        // 处理点赞图标的点击事件
+        $(document).ready(function () {
+    $('.like-wrapper').on('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $likeWrapper = $(this); // 获取当前的点赞包裹元素
+        var $likeIcon = $likeWrapper.find('.icon'); // 获取点赞图标
+        var $likeCount = $likeWrapper.find('.count'); // 获取计数器元素
+        var artworkId = '{{ work.artwork_id }}'; // 使用模板引擎注入的作品ID
+
+        $.ajax({
+            url: '/like/' + artworkId, // 使用后端提供的点赞路由
+            type: 'POST',
+            success: function (response) {
+                if (response.result === 'liked') {
+                    $likeIcon.addClass('liked'); // 如果后端返回已点赞，则添加liked类，使图标变红
+                    $likeCount.text(response.likes_count); // 更新点赞数量
+                } else if (response.result === 'unliked') {
+                    $likeIcon.removeClass('liked'); // 如果后端返回已取消点赞，则移除liked类
+                    $likeCount.text(response.likes_count); // 更新点赞数量
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("Error occurred: " + error);
+            }
+        });
+    });
+});
+
+        // 处理收藏图标的点击事件
+        $('.collect-wrapper').on('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var $collectIcon = $(this).find('.icon');
+            var $collectCount = $(this).find('.count');
+            var artworkId = '{{ work.artwork_id }}';
+
+            $.ajax({
+                url: '/collect_artwork/' + artworkId,
+                type: 'POST',
+                success: function (data) {
+                    if (data.result === 'collected') {
+                        $collectIcon.addClass('collected');
+                        $collectCount.text(data.num_of_collects);
+                    } else if (data.result === 'uncollected') {
+                        $collectIcon.removeClass('collected');
+                        $collectCount.text(data.num_of_collects);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error occurred: " + error);
+                }
+            });
+        });
+        // 处理关注按钮的点击事件
+        $('#follow-btn').on('click', function (e) {
+            e.preventDefault();
+            var $followBtn = $(this);
+            var userId = $followBtn.data('user-id'); // 获取要关注的用户ID
+
+            $.ajax({
+                url: '/follow/' + userId,
+                type: 'POST',
+                success: function (data) {
+                    if (data.result === 'followed') {
+                        $followBtn.find('.reds-button-new-text').text('已关注');
+                    } else if (data.result === 'unfollowed') {
+                        $followBtn.find('.reds-button-new-text').text('关注');
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error occurred: " + error);
+                }
+            });
+        });
+
+
+
+        $('#send-comment').on('click', function () {
+        var commentContent = $('#comment-input').val().trim();
+        if (commentContent) {
+            $.ajax({
+                url: '/save_comment/' + artworkId, // 使用获取的 artworkId
+                type: 'POST',
+                data: { content: commentContent },
+                success: function (data) {
+                    if (data.success) {
+                        // 处理成功的逻辑
+                        resetCommentBox(); // 重置输入框
+
+                        location.reload();
+                    } else {
+                        // 有可能是后端返回的其他 success=false 的情况
+                        alert(data.message);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    // 捕获比如 404 或 500 状态的错误
+                    console.error("Error occurred: " + error);
+                    var response = xhr.responseJSON;
+                    alert(response ? response.error : 'An error occurred');
+                }
+            });
+        } else {
+            // 提示用户输入内容
+            alert('请输入评论内容！');
+        }
+    });
+
+    // 重置评论框到初始状态的函数
+    function resetCommentBox() {
+        $('#comment-input').val('').removeClass('expanded');
+        $('.engage-bar-style').show(); // 显示图标
+        $('#send-comment').hide(); // 隐藏发送按钮
+        $('#cancel-comment').hide(); // 隐藏取消按钮
+    }
+
+    // 当评论输入框获得焦点时的处理逻辑
+    $('#comment-input').on('focus', function () {
+        $('.engage-bar-style').hide(); // 隐藏点赞、收藏和评论图标
+        $(this).addClass('expanded'); // 输入框变长
+        $('#send-comment').show(); // 显示发送按钮
+        $('#cancel-comment').show(); // 显示取消按钮
+    });
+
+    // 取消按钮的逻辑
+    $('#cancel-comment').on('click', function () {
+        resetCommentBox();
+    });
+
+        });
+    </script>
+</body>
+</html>

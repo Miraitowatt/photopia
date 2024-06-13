@@ -1,0 +1,21 @@
+.auth .brand-logo img{
+    width:200px;
+}
+
+h4, .h4 {
+    font-family: 'FZYaoti';
+}
+
+
+
+.btn-primary {
+    color: #fff;
+    background-color: #3274e7;
+    border-color: #93b3ff;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #588fed;
+    border-color: #a5a8af;
+}
